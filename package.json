@@ -1,5 +1,5 @@
 {
-  "name": "cymatic",
+  "name": "cymatic.api",
   "version": "0.0.1",
   "description": "Comunicate with Cymatic's api",
   "author": "Narciso Guillen <guillen.narciso@gmail.com>",

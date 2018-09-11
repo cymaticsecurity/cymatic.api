@@ -11,7 +11,7 @@ Cymatic is a ...
 ### Set up cymatic
 
 ```javascript
-  const Cymatic = require('cymatic');
+  const Cymatic = require('cymatic.api');
 
   let cymatic = new Cymatic({
     token  : 'a.token',

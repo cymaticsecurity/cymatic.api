@@ -1,0 +1,17 @@
+{
+
+  "api" : {
+    "host"      : "https://api.cymaticsecurity.com/api/v1",
+    "endpoints" : {
+      "registration" : "/profiles",
+      "verify"       : "/verify"  ,
+      "login"        : "/openSession",
+      "logout"       : "/sessions"
+    }
+  },
+
+  "auth" : {
+    "token"  : "",
+    "secret" : ""
+  }
+}

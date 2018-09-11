@@ -111,7 +111,7 @@ module.exports = class Cymatic extends EventEmitter {
 
       if(!sid){ return reject("Missing 'sid', session id provided for a user on login"); }
 
-      this.request.delete(endpoint, { json }, (error, response, body) => {
+      this.request.delete(endpoint, (error, response, body) => {
         if(error){ return reject(error); }
         if(response.statusCode >= 400){ return reject(body); }
         return resolve(body);

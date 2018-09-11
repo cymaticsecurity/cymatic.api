@@ -2,9 +2,12 @@
   "name": "cymatic",
   "version": "0.0.1",
   "description": "Comunicate with Cymatic's api",
-  "author": "Cymatic Security",
+  "author": "Narciso Guillen <guillen.narciso@gmail.com>",
   "license": "ISC",
-  "contributors": [ { "name": "Narciso Guillen" } ],
+  "repository": {
+    "type" : "git",
+    "url"  : "git+ssh://git@github.com:narcisoguillen/cymatic.git"
+  },
   "main": "index",
   "scripts": {},
   "engines": {

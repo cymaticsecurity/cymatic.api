@@ -4,7 +4,7 @@ Cymatic is a ...
 
 ## Instalation
 
-     npm install cymatic
+     npm install cymatic.api
 
 ## Usage
 
@@ -49,6 +49,8 @@ Cymatic is a ...
 
 ### Login
 
+In order to `login` a user it will first need to get `verified` using `cymatic.verify`
+
 ```javascript
 
   cymatic.login({ jwt, c_uuid }).then( session => {
@@ -60,6 +62,8 @@ Cymatic is a ...
 ```
 
 ### Logout
+
+To `logout` a user, use the sid granted on `login`
 
 ```javascript
 

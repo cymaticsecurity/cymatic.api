@@ -5,8 +5,8 @@
   "author": "Narciso Guillen <guillen.narciso@gmail.com>",
   "license": "ISC",
   "repository": {
-    "type" : "git",
-    "url"  : "git+ssh://git@github.com:narcisoguillen/cymatic.git"
+    "type": "git",
+    "url": "git+ssh://git@github.com/narcisoguillen/cymatic.git"
   },
   "main": "index",
   "scripts": {},
@@ -16,5 +16,12 @@
   "dependencies": {
     "request": "^2.88.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/narcisoguillen/cymatic/issues"
+  },
+  "homepage": "https://github.com/narcisoguillen/cymatic#readme",
+  "keywords": [
+    "cymatic"
+  ]
 }

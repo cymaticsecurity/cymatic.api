@@ -22,6 +22,13 @@ module.exports = class Cymatic extends EventEmitter {
   }
 
   /*
+   * Simple setter
+   * */
+  set (key, value) {
+    settings.api[key] = value;
+  }
+
+  /*
    * param json @Object
    * {
    *   jwt   : 'j.w.t'

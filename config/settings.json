@@ -1,5 +1,4 @@
 {
-
   "api" : {
     "host"      : "https://api.cymaticsecurity.com/api/v1",
     "endpoints" : {

@@ -1,16 +1,11 @@
 {
   "api" : {
-    "host"      : "https://api.cymaticsecurity.com/api/v1",
+    "host"      : "https://spv2.cymatic.info",
     "endpoints" : {
       "registration" : "profiles",
       "verify"       : "verify"  ,
       "login"        : "openSession",
       "logout"       : "sessions"
     }
-  },
-
-  "auth" : {
-    "token"  : "",
-    "secret" : ""
   }
 }

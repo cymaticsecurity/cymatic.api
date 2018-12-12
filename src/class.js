@@ -1,24 +1,9 @@
-const settings     = require('../config/settings');
-const EventEmitter = require('events');
-const request      = require('request');
+const settings = require('../config/settings');
+const request  = require('request');
 
-module.exports = class Cymatic extends EventEmitter {
+module.exports = class Cymatic {
 
-  constructor(auth){
-    super();
-
-    settings.auth = auth;
-    this.valid    = auth.token && auth.secret;
-    this.request  = request.defaults({
-      headers: {
-        'X-Auth-Token'        : auth.token,
-        'X-Auth-Token-Secret' : auth.secret
-      }
-    });
-
-    process.nextTick( () => {
-      if(!this.valid){ return this.onError('Missing tokens'); }
-    });
+  constructor() {
   }
 
   /*
@@ -40,13 +25,11 @@ module.exports = class Cymatic extends EventEmitter {
     let endpoint = `${api.host}/${api.endpoints.registration}`;
 
     return new Promise( (resolve, reject) => {
-      if(!this.valid){ return reject('Missing tokens'); }
-
       if(!json || typeof json !== 'object'){ return reject('Malformed or missing JSON param'); }
       if(!json.alias){ return reject("Missing 'alias', Any human readable identifier [email]"); }
       if(!json.jwt){   return reject("Missing 'jwt', Json Web Token coming from your SDK"); }
 
-      this.request.post(endpoint, { json }, (error, response, body) => {
+      request.post(endpoint, { json }, (error, response, body) => {
         if(error){ return reject(error); }
         if(response.statusCode >= 400){ return reject(body); }
         return resolve(body);
@@ -66,13 +49,11 @@ module.exports = class Cymatic extends EventEmitter {
     let endpoint = `${api.host}/${api.endpoints.verify}`;
 
     return new Promise( (resolve, reject) => {
-      if(!this.valid){ return reject('Missing tokens'); }
-
       if(!json || typeof json !== 'object'){ return reject('Malformed or missing JSON param'); }
       if(!json.c_uuid){ return reject("Missing 'c_uuid', profile identifier you received when creating it on Cymatic"); }
       if(!json.jwt){   return reject("Missing 'jwt', Json Web Token coming from your SDK"); }
 
-      this.request.post(endpoint, { json }, (error, response, body) => {
+      request.post(endpoint, { json }, (error, response, body) => {
         if(error){ return reject(error); }
         if(response.statusCode >= 400){ return reject(body); }
         return resolve(body);
@@ -87,38 +68,43 @@ module.exports = class Cymatic extends EventEmitter {
    *   c_uuid : 'profile identifier'
    * }
    * */
-   login(json){
+   login(data){
     let api      = settings.api;
     let endpoint = `${api.host}/${api.endpoints.login}`;
 
     return new Promise( (resolve, reject) => {
-      if(!this.valid){ return reject('Missing tokens'); }
+      if(!data || typeof data !== 'object'){ return reject('Malformed or missing JSON param'); }
+      if(!data.c_uuid){ return reject("Missing 'c_uuid', profile identifier you received when creating it on Cymatic"); }
+      if(!data.jwt){   return reject("Missing 'jwt', Json Web Token coming from your SDK"); }
 
-      if(!json || typeof json !== 'object'){ return reject('Malformed or missing JSON param'); }
-      if(!json.c_uuid){ return reject("Missing 'c_uuid', profile identifier you received when creating it on Cymatic"); }
-      if(!json.jwt){   return reject("Missing 'jwt', Json Web Token coming from your SDK"); }
-
-      this.request.post(endpoint, { json }, (error, response, body) => {
+      request.post({
+        url     : endpoint,
+        json    : { c_uuid : data.c_uuid },
+        headers : {
+          Authorization : `Bearer ${data.jwt}`
+        }
+      }, (error, response, body) => {
         if(error){ return reject(error); }
         if(response.statusCode >= 400){ return reject(body); }
         return resolve(body);
       });
     });
-  }
+   }
 
   /*
-   * param sid @String
+   * param session_id @String
    * */
-  logout(sid){
+  logout(session_id){
     let api      = settings.api;
-    let endpoint = `${api.host}/${api.endpoints.logout}/${sid}`;
+    let endpoint = `${api.host}/${api.endpoints.logout}`;
 
     return new Promise( (resolve, reject) => {
-      if(!this.valid){ return reject('Missing tokens'); }
+      if(!session_id){ return reject("Missing 'session_id', session id provided for a user on login"); }
 
-      if(!sid){ return reject("Missing 'sid', session id provided for a user on login"); }
-
-      this.request.delete(endpoint, (error, response, body) => {
+      request.post({
+        url     : endpoint,
+        json    : { session_id }
+      }, (error, response, body) => {
         if(error){ return reject(error); }
         if(response.statusCode >= 400){ return reject(body); }
         return resolve(body);
@@ -126,8 +112,4 @@ module.exports = class Cymatic extends EventEmitter {
     });
   }
 
-  onError(error){
-    return this.emit('error', new Error(error));
-  }
-
-}
+};

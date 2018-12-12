@@ -13,14 +13,7 @@ Cymatic is a ...
 ```javascript
   const Cymatic = require('cymatic.api');
 
-  let cymatic = new Cymatic({
-    token  : 'a.token',
-    secret : 'a.secret'
-  });
-
-  cymatic.on('error', error => {
-    console.log(error);
-  });
+  let cymatic = new Cymatic();
 ```
 
 ### Register

@@ -4,8 +4,8 @@
     "endpoints" : {
       "registration" : "profiles",
       "verify"       : "verify"  ,
-      "login"        : "openSession",
-      "logout"       : "sessions"
+      "login"        : "login",
+      "logout"       : "logout"
     }
   }
 }

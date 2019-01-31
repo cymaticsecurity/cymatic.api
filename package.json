@@ -1,6 +1,6 @@
 {
   "name": "cymatic.api",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Comunicate with Cymatic's api",
   "author": "Narciso Guillen <guillen.narciso@gmail.com>",
   "license": "ISC",
@@ -11,7 +11,7 @@
   "main": "index",
   "scripts": {},
   "engines": {
-    "node": "10.2.0"
+    "node": ">=10.2.0"
   },
   "dependencies": {
     "request": "^2.88.0"

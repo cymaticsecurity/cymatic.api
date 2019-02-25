@@ -1,11 +1,16 @@
 {
-  "api" : {
-    "host"      : "https://spv2.cymatic.info",
-    "endpoints" : {
-      "registration" : "profiles",
-      "verify"       : "verify"  ,
-      "login"        : "login",
-      "logout"       : "logout"
-    }
+
+  "cymatic" : {
+    "api" : "https://spv2.cymatic.info",
+    "idp" : "https://sso.cymatic.info"
+  },
+
+  "tenant" : {
+    "name"     : "",
+    "client"   : "",
+    "secret"   : "",
+    "username" : "",
+    "password" : ""
   }
+
 }

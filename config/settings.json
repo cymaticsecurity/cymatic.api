@@ -7,7 +7,7 @@
 
   "tenant" : {
     "name"     : "",
-    "client"   : "",
+    "clientId" : "",
     "secret"   : "",
     "username" : "",
     "password" : ""

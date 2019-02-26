@@ -8,7 +8,7 @@ module.exports = class IDP {
   constructor () {
     let host = settings.cymatic.idp;
     this.endpoint     = `${host}/auth/realms/${settings.tenant.name}/protocol/openid-connect/token/`;
-    this.authHeader   = 'Basic ' + Buffer.from(settings.tenant.client + ':' + settings.tenant.secret).toString('base64');
+    this.authHeader   = 'Basic ' + Buffer.from(settings.tenant.clientId + ':' + settings.tenant.secret).toString('base64');
     this.access_token = null;
   }
 

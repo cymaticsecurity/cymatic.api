@@ -37,12 +37,7 @@ module.exports = class IDP {
   fetchToken(){
     return new Promise( (resolve, reject) => {
       let headers = { Authorization : this.authHeader }
-
-      let form = {
-        grant_type : 'password' ,
-        username   : settings.tenant.username,
-        password   : settings.tenant.password,
-      };
+      let form    = { grant_type : 'client_credentials' };
 
       request.post({ url : this.endpoint, headers , form }, function(error, response, body){
         if(error){ return reject(error); }

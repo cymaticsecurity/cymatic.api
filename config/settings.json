@@ -8,9 +8,7 @@
   "tenant" : {
     "name"     : "",
     "clientId" : "",
-    "secret"   : "",
-    "username" : "",
-    "password" : ""
+    "secret"   : ""
   }
 
 }

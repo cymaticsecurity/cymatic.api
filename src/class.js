@@ -11,6 +11,28 @@ module.exports = class Cymatic {
     this.idp = new IDP();
   }
 
+  register(body){
+    return new Promise( (resolve, reject) =>{
+      this.idp.auth().then( access_token => {
+        this.api.register({
+          json    : { alias : body.alias, jwt : body.jwt },
+          headers : { Authorization : `Bearer ${access_token}` }
+        }).then(resolve, reject);
+      } ,reject);
+    });
+  }
+
+  verify(body){
+    return new Promise( (resolve, reject) =>{
+      this.idp.auth().then( access_token => {
+        this.api.verify({
+          json    : { c_uuid : body.c_uuid, jwt : body.jwt },
+          headers : { Authorization : `Bearer ${access_token}` }
+        }).then(resolve, reject);
+      } ,reject);
+    });
+  }
+
   login(body){
     return new Promise( (resolve, reject) =>{
       this.idp.auth().then( access_token => {

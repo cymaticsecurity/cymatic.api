@@ -13,7 +13,13 @@ Cymatic is a ...
 ```javascript
   const Cymatic = require('cymatic.api');
 
-  let cymatic = new Cymatic();
+  let cymatic = new Cymatic({
+    "tenant" : {
+      "name"     : "app",
+      "clientId" : "myApp",
+      "secret"   : "shh.this.is.a.secret",
+    }
+  });
 ```
 
 ### Register

@@ -1,6 +1,6 @@
 {
   "name": "cymatic.api",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Comunicate with Cymatic's api",
   "author": "Narciso Guillen <guillen.narciso@gmail.com>",
   "license": "ISC",

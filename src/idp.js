@@ -22,11 +22,11 @@ module.exports = class IDP {
         return this.fetchToken().then(this.parseToken.bind(this)).then(resolve, reject);
       }
 
-      let expirationDate = moment(this.payload.exp);
+      let expirationDate = moment.unix(this.payload.exp);
       let now            = moment();
 
       // expired
-      if(expirationDate.isAfter(now)){
+      if(now.isAfter(expirationDate)){
         return this.fetchToken().then(this.parseToken.bind(this)).then(resolve, reject);
       }
 

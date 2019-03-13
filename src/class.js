@@ -44,11 +44,11 @@ module.exports = class Cymatic {
     });
   }
 
-  logout(session_id){
+  logout(body){
     return new Promise( (resolve, reject) =>{
       this.idp.auth().then( access_token => {
         this.api.logout({
-          json    : { session_id },
+          json    : { session_id : body.session_id, jwt : body.jwt },
           headers : { Authorization : `Bearer ${access_token}` }
         }).then(resolve, reject);
       } ,reject);

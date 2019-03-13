@@ -17,7 +17,7 @@ module.exports = class API {
     let data = options.json;
     return new Promise( (resolve, reject) => {
       if(!data || typeof data !== 'object'){ return reject('Malformed or missing JSON param'); }
-      if(!data.c_uuid){ return reject("Missing 'c_uuid', profile identifier you received when creating it on Cymatic"); }
+      if(!data.jwt){ return reject("Missing 'jwt', Json Web Token coming from your SDK"); }
 
       request.post(Object.assign( options, {
         url : `${settings.cymatic.api}/profiles`

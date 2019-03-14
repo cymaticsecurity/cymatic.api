@@ -24,7 +24,7 @@ module.exports = class API {
       }), (error, response, body) => {
         if(error || response.statusCode >= 400){
           return reject({
-            error : error || body
+            error : error || body,
             code  : response.statusCode
           });
         }
@@ -52,7 +52,7 @@ module.exports = class API {
       }), (error, response, body) => {
         if(error || response.statusCode >= 400){
           return reject({
-            error : error || body
+            error : error || body,
             code  : response.statusCode
           });
         }
@@ -80,7 +80,7 @@ module.exports = class API {
       }), (error, response, body) => {
         if(error || response.statusCode >= 400){
           return reject({
-            error : error || body
+            error : error || body,
             code  : response.statusCode
           });
         }
@@ -104,7 +104,7 @@ module.exports = class API {
       }), (error, response, body) => {
         if(error || response.statusCode >= 400){
           return reject({
-            error : error || body
+            error : error || body,
             code  : response.statusCode
           });
         }

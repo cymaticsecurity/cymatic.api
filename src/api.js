@@ -22,8 +22,12 @@ module.exports = class API {
       request.post(Object.assign( options, {
         url : `${settings.cymatic.api}/profiles`
       }), (error, response, body) => {
-        if(error){ return reject(error); }
-        if(response.statusCode >= 400){ return reject(body); }
+        if(error || response.statusCode >= 400){
+          return reject({
+            error : error || body
+            code  : response.statusCode
+          });
+        }
         return resolve(body);
       });
     });
@@ -46,8 +50,12 @@ module.exports = class API {
       request.post(Object.assign( options, {
         url : `${settings.cymatic.api}/verify`
       }), (error, response, body) => {
-        if(error){ return reject(error); }
-        if(response.statusCode >= 400){ return reject(body); }
+        if(error || response.statusCode >= 400){
+          return reject({
+            error : error || body
+            code  : response.statusCode
+          });
+        }
         return resolve(body);
       });
     });
@@ -70,8 +78,12 @@ module.exports = class API {
       request.post(Object.assign( options, {
         url : `${settings.cymatic.api}/login`
       }), (error, response, body) => {
-        if(error){ return reject(error); }
-        if(response.statusCode >= 400){ return reject(body); }
+        if(error || response.statusCode >= 400){
+          return reject({
+            error : error || body
+            code  : response.statusCode
+          });
+        }
         return resolve(body);
       });
     });
@@ -90,8 +102,12 @@ module.exports = class API {
       request.post(Object.assign(options, {
         url : `${settings.cymatic.api}/logout`
       }), (error, response, body) => {
-        if(error){ return reject(error); }
-        if(response.statusCode >= 400){ return reject(body); }
+        if(error || response.statusCode >= 400){
+          return reject({
+            error : error || body
+            code  : response.statusCode
+          });
+        }
         return resolve(body);
       });
     });

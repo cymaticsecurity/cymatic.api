@@ -48,7 +48,7 @@ module.exports = class Cymatic {
     return new Promise( (resolve, reject) =>{
       this.idp.auth().then( access_token => {
         this.api.logout({
-          json    : { session_id : body.session_id, jwt : body.jwt },
+          json    : { session_id : body.session_id },
           headers : { Authorization : `Bearer ${access_token}` }
         }).then(resolve, reject);
       } ,reject);

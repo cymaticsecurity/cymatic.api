@@ -1,8 +1,8 @@
 {
 
   "cymatic" : {
-    "api" : "https://spv2.cymatic.info",
-    "idp" : "https://sso.cymatic.info"
+    "api" : "https://api.cymaticsecurity.com",
+    "idp" : "https://sso.cymaticsecurity.com"
   },
 
   "tenant" : {
